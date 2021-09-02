@@ -6,12 +6,12 @@ myquery = dns.resolver.Resolver()
 domain = "yahoo.com" 
 
 def func_a(_target):
-    question = myquery.query(_target, 'AAAA')
+    question = myquery.query(_target, 'A')
 
     for _addr in question:
         print('[+] - ' + _target + '---> ' + str(_addr))
 
-def bruteforce_dns_ipv6(_wordlist):
+def bruteforce_dns_ipv4(_wordlist):
     with open(_wordlist, 'r') as machines:
         while True:
             machine = machines.readline().strip("\n")
@@ -25,9 +25,9 @@ def bruteforce_dns_ipv6(_wordlist):
             except:
                 pass
 
-#bruteforce_dns_ipv6("file.txt")
-thread_ipv6 = Thread(target=bruteforce_dns_ipv6,args=('file.txt',))
-thread_ipv6.start()
+#bruteforce_dns_ipv4("file.txt")
+thread_ipv4 = Thread(target=bruteforce_dns_ipv4,args=('file.txt',))
+thread_ipv4.start()
 
 
 
